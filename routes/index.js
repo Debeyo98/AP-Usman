@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const comment = require("../models/comment");
-const comments = comment.find({});
+const Comment = require("../models/comment");
+const comments = Comment.find({});
 
 router.get("/", (req, res, next) => {
     comments.exec((err, data) => {

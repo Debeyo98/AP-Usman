@@ -6,7 +6,7 @@ const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
 const session = require("express-session");
-const Comment  = require('./models/comment');
+const Comment = require('./models/comment');
 
 
 // Define express function
@@ -14,18 +14,18 @@ const app = express();
 const PORT = 7000;
 
 // Configure mongoose to connect to database
-mongoose.connect("mongodb://localhost/apusmanfoundation", { 
-    useNewUrlParser: true, 
-    useUnifiedTopology: true 
-}).then( (response) => {
+mongoose.connect("mongodb://localhost/apusmanfoundation", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then((response) => {
     console.log("AP Usman Foundation database connected successfully");
-}).catch( (error) => {
+}).catch((error) => {
     console.log(error);
 });
 
 //Configuring Express App 
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Cookie setup
@@ -50,9 +50,9 @@ app.use((req, res, next) => {
     res.locals.success_message = req.flash("success-message");
     res.locals.error_message = req.flash("error-message");
     res.locals.messages = require("express-messages")(req, res);
-    res.locals.isAuthenticated = req.user ? true : false;
+    // res.locals.isAuthenticated = req.user ? true : false;
     res.locals.comment = req.message
-    res.locals.user = req.user || null; 
+    res.locals.user = req.user || null;
     next()
 });
 
@@ -63,9 +63,14 @@ app.set('view engine', 'ejs');
 
 
 
-//Home route
+//Routes grouping
 const index = require("./routes/index");
+const admin = require('./routes/adminRoutes')
+const comments = require('./routes/commentsRoutes')
+
 app.use("/", index)
+app.use("/comments", comments)
+app.use('/admin', admin)
 // app.get("/", async (req, res) => {
 //     const comments  = await Comment.find();
 //     console.log(comments);
@@ -73,26 +78,50 @@ app.use("/", index)
 //     res.render("index.ejs", {comments:comments});
 // }); 
 
-app.post('/comment', (req, res) =>{
+app.post('/comment', (req, res, err) => {
     let {
         name,
         email,
-        subject,
+        // subject,
         message
     } = req.body
 
-    let newComment = new Comment({
-        name,
-        email,
-        subject,
-        message
-    });
+    let errors = []
 
-    newComment.save()
-    .then(comment =>{
-        req.flash("comment successfully created");
-        console.log(comment);
-    });
+    if (!message) {
+        errors.push({ msg: "please enter a message to comment" })
+    }
+
+    if (errors.length > 0) {
+        res.render("#contact", {
+            errors,
+            name,
+            email,
+            message,
+        })
+
+    } else {
+
+        const newComment = new Comment({
+            name,
+            email,
+            // subject,
+            message
+        });
+
+        newComment.save()
+            .then(comment => {
+                req.flash(
+                    "success-message",
+                    "comment sent successfully"
+                );
+                return
+                // console.log(comment);
+            });
+
+
+    }
+
 
 });
 

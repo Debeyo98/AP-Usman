@@ -4,19 +4,28 @@
   "description": "foundation",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js"
   },
+
+  "engines": {
+    "node": "8.10.0"
+  },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Debeyo98/AP-Usman.git"
   },
   "author": "black diamond",
   "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
   "bugs": {
     "url": "https://github.com/Debeyo98/AP-Usman/issues"
   },
   "homepage": "https://github.com/Debeyo98/AP-Usman#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
     "ejs": "^3.1.5",

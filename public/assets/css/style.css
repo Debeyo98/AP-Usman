@@ -14,10 +14,10 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-/* .logo img{
-  width: 200%;
-  height: 60rem;
-} */
+.logo img{
+  width: 100px;
+  height: 70px
+}
 
 a {
   color: #18d26e;
@@ -837,120 +837,7 @@ section {
   margin-bottom: 0;
 }
 
-/* Call To Action Section
---------------------------------*/
-#call-to-action {
-  background: linear-gradient(rgba(0, 142, 99, 0.1), rgba(0, 0, 0, 0.1)), url(../img/call-to-action-bg.jpg) fixed center center;
-  background-size: cover;
-  padding: 60px 0;
-}
 
-#call-to-action h3 {
-  color: #fff;
-  font-size: 28px;
-  font-weight: 700;
-}
-
-#call-to-action p {
-  color: #fff;
-}
-
-#call-to-action .cta-btn {
-  font-family: "Montserrat", sans-serif;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 16px;
-  letter-spacing: 1px;
-  display: inline-block;
-  padding: 8px 28px;
-  border-radius: 25px;
-  transition: 0.5s;
-  margin-top: 10px;
-  border: 2px solid #fff;
-  color: #fff;
-}
-
-#call-to-action .cta-btn:hover {
-  background: #18d26e;
-  border: 2px solid #18d26e;
-}
-
-/* Call To Action Section
---------------------------------*/
-#skills {
-  padding: 60px 0;
-}
-
-#skills .progress {
-  height: 35px;
-  margin-bottom: 10px;
-}
-
-#skills .progress .skill {
-  font-family: "Open Sans", sans-serif;
-  line-height: 35px;
-  padding: 0;
-  margin: 0 0 0 20px;
-  text-transform: uppercase;
-}
-
-#skills .progress .skill .val {
-  float: right;
-  font-style: normal;
-  margin: 0 20px 0 0;
-}
-
-#skills .progress-bar {
-  width: 1px;
-  text-align: left;
-  transition: .9s;
-}
-
-/* Facts Section
---------------------------------*/
-#facts {
-  background: url("../img/facts-bg.jpg") center top no-repeat fixed;
-  background-size: cover;
-  padding: 60px 0 0 0;
-  position: relative;
-}
-
-#facts::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.88);
-  z-index: 9;
-}
-
-#facts .container {
-  position: relative;
-  z-index: 10;
-}
-
-#facts .counters span {
-  font-family: "Montserrat", sans-serif;
-  font-weight: bold;
-  font-size: 48px;
-  display: block;
-  color: #18d26e;
-}
-
-#facts .counters p {
-  padding: 0;
-  margin: 0 0 20px 0;
-  font-family: "Montserrat", sans-serif;
-  font-size: 14px;
-  color: #111;
-}
-
-#facts .facts-img {
-  text-align: center;
-  padding-top: 30px;
-}
 
 /* Portfolio Section
 --------------------------------*/
@@ -1685,3 +1572,11 @@ section {
   font-size: 13px;
   color: #ddd;
 }
+
+/* table styles */
+table, th,td{
+  border: 2px solid #18d26e;
+  border-collapse: collapse;
+  margin: 0 auto;
+  padding: 1rem 4rem
+ }

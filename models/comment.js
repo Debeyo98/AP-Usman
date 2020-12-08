@@ -8,12 +8,18 @@ const commentSchema = new Schema({
     email:{
         type: String
     },
-    subject:{
-        type: String
-    },
     message:{
-        type: String
+        type: String 
+    },
+    approved: {
+        type: Boolean,
+        default: false
+    },
+
+    date: {
+        type: Date,
+        default: new Date()
     }
 });
 
-module.exports = comment = mongoose.model('comment', commentSchema);
+module.exports = Comment = mongoose.model('comment', commentSchema);

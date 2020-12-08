@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>All Comment</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+      <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <table>
+        <th>Name</th>
+        <th>email</th>
+        <th>Message</th>
+        <th>Date</th>
+        <th>Approval</th>
+        <th>Action</th>
+        <% comments.forEach(comment => { %>
+            <tr>
+                <td><%=comment.name %></td>
+                <td><%=comment.email %></td>
+                <td><%=comment.message %></td>
+                <td><%=comment.date %></td>
+                <td><%=comment.approved %></td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a href="/comments/delete/<%= comment._id %>" class="dropdown-item">Delete</a>
+                            <a href="/comments/approve/<%= comment._id %>" class="dropdown-item">Approve</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        <% }) %>
+            
+    </table>
+
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
